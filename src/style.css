@@ -134,13 +134,13 @@ h1:hover {
     top: 1rem;
     right: 2rem;
     font-size: 1.5rem;
-    opacity: 1;
+    opacity: 67;
     transition: .3s;
     z-index: 3;
 }
 
 .mail:hover {
-    opacity: 1;
+    opacity: 78;
     transform: scale(1.07);
 }
 
