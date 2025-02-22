@@ -93,7 +93,7 @@ toggleInput.addEventListener('change', function () {
             particles: {
                 number: { value: 100, density: { enable: true, value_area: 800 } },
                 color: { value: "#7B2CBF" },
-                shape: { type: "circle" },
+                shape: { type: "edge", stroke: { width: 0, color: "#000000" }, polygon: { nb_sides: 4 } }, // Diamond shape
                 opacity: { value: 0.75 },
                 size: {
                     value: 2,
@@ -136,8 +136,9 @@ toggleInput.addEventListener('change', function () {
                 number: { value: 100, density: { enable: true, value_area: 800 } },
                 color: { value: "#b392ac" },
                 shape: {
-                    type: "polygon",
-                    polygon: { nb_sides: 6 },
+                    type: "edge", // Use "edge" for diamond shape
+                    stroke: { width: 0, color: "#000000" },
+                    polygon: { nb_sides: 4 } // Diamond shape has 4 sides
                 },
                 opacity: { value: 0.75 },
                 size: {
@@ -180,8 +181,9 @@ particlesJS("particles-js", {
         number: { value: 80, density: { enable: true, value_area: 800 } },
         color: { value: "#b392ac" },
         shape: {
-            type: "polygon",
-            polygon: { nb_sides: 6 },
+            type: "edge", // Use "edge" for diamond shape
+            stroke: { width: 0, color: "#000000" },
+            polygon: { nb_sides: 4 } // Diamond shape has 4 sides
         },
         opacity: { value: 0.75 },
         size: {
