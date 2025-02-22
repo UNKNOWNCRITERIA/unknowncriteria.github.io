@@ -1,52 +1,64 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Intangible Network Official</title>
+    <title>Intangible Network</title>
     <link rel="stylesheet" href="assets/css/style.css">
-    <script src="assets/js/script.js" defer></script>
+    <script defer src="assets/js/script.js"></script>
 </head>
 <body>
     <header>
         <nav>
             <ul>
+                <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#services">Services</a></li>
+                <li><a href="#projects">Projects</a></li>
                 <li><a href="#contact">Contact</a></li>
+                <li><button id="dark-mode-toggle">Dark Mode</button></li>
             </ul>
         </nav>
-    </header>
-    
-    <section id="about">
-        <h1>Welcome to Intangible Network</h1>
-        <p>Your gateway to AI-powered networking solutions.</p>
-    </section>
-    
-    <section id="services">
-        <h2>Our Services</h2>
-        <ul>
-            <li>AI-Powered Network Optimization</li>
-            <li>Secure and Fast Cloud Connectivity</li>
-            <li>Smart Business & Social Networking</li>
-        </ul>
-    </section>
-    
-    <section id="contact">
-        <h2>Contact Us</h2>
-        <form id="contact-form" action="server/contact-handler.php" method="POST">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-            <label for="message">Message:</label>
-            <textarea id="message" name="message" required></textarea>
-            <button type="submit">Send</button>
-        </form>
-    </section>
-    
-    <footer>
-        <p>&copy; 2025 Intangible Network Official. All rights reserved.</p>
-    </footer>
+    </header><section id="home">
+    <h1>Welcome to Intangible Network</h1>
+    <p>Building smart, AI-powered networking solutions.</p>
+</section>
+
+<section id="about">
+    <h2>About Us</h2>
+    <p>Intangible Network Official is a next-generation platform for seamless networking.</p>
+</section>
+
+<section id="services">
+    <h2>Our Services</h2>
+    <ul>
+        <li>AI-Driven Networking</li>
+        <li>Business & Social Networking</li>
+        <li>Telecom & ISP Solutions</li>
+    </ul>
+</section>
+
+<section id="projects">
+    <h2>Our Projects</h2>
+    <div class="project-list">
+        <div class="project">Project 1</div>
+        <div class="project">Project 2</div>
+        <div class="project">Project 3</div>
+    </div>
+</section>
+
+<section id="contact">
+    <h2>Contact Us</h2>
+    <form id="contact-form">
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <textarea placeholder="Your Message" required></textarea>
+        <button type="submit">Send</button>
+    </form>
+</section>
+
+<footer>
+    <p>&copy; 2025 Intangible Network Official</p>
+</footer>
+
 </body>
 </html>
