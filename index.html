@@ -3,36 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rahul Kumar - Intangible Network Official</title>
+    <title>Intangible Network Official - Rahul Kumar</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="script.js" defer></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://kit.fontawesome.com/YOUR-FONT-AWESOME-CDN.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
-    <div id="welcome-screen">
-        <h1>Welcome</h1>
-        <p>Click anywhere to continue</p>
+    <!-- Welcome Screen -->
+    <div id="welcome-screen" onclick="nextStep()">
+        <span id="welcome-text">Welcome</span>
     </div>
 
-    <main id="main-content" class="hidden">
-        <header>
-            <h1>Rahul Kumar</h1>
-            <h2>Founder of Intangible Network Official</h2>
-        </header>
+    <!-- Main Content -->
+    <div id="main-content" class="hidden">
+        <div class="header">Intangible Network Official</div>
 
-        <section id="info-box">
-            <p><strong>Network:</strong> Intangible Network Official</p>
-            <p><strong>Email:</strong> legendcoder90@gmail.com</p>
-            <p><strong>Instagram:</strong> <a href="https://instagram.com/the_noob_rahul/" target="_blank">@the_noob_rahul</a></p>
-        </section>
+        <!-- Info Boxes -->
+        <div class="box">Hello! I'm <b>Rahul Kumar</b>, founder of Intangible Network Official.</div>
+        <div class="box">We specialize in AI-powered networking & smart connections.</div>
+        <div class="box">Explore our innovations in computer networks, social networks, and telecom.</div>
 
-        <footer>
-            <p>© 2025 Rahul Kumar | Intangible Network Official</p>
-        </footer>
-    </main>
+        <!-- Contact Icons -->
+        <div class="contact-icons">
+            <a href="mailto:legendcoder90@gmail.com" target="_blank"><i class="fas fa-envelope"></i></a>
+            <a href="https://instagram.com/the_noob_rahul/" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://github.com/UnknownCriteria" target="_blank"><i class="fab fa-github"></i></a>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
 
 </body>
 </html>
