@@ -11,9 +11,9 @@
 :root {
     --primary-color: #734f96;
     --secondary-color: #e8e1ef;
-    --background-color: #100b16;
+    --background-color: #FFDAB9;
     --text-color: #fff;
-    --hover-color: #e7bdffa1;
+    --hover-color: #E6E6FA;
     --border-color: rgba(255, 255, 255, 0.2);
     -webkit-tap-highlight-color: transparent;
     -webkit-user-select: none; 
