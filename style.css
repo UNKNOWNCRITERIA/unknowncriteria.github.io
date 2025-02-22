@@ -1,44 +1,42 @@
-/* General styles */
-body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Poppins', sans-serif;
-    background-color: #111;
-    color: white;
-    overflow: hidden;
-}
-
-/* Welcome screen */
+/* Welcome Screen */
 #welcome-screen {
     position: fixed;
-    width: 100vw;
+    width: 100%;
     height: 100vh;
-    background: linear-gradient(45deg, #0f0c29, #302b63, #24243e);
+    background: linear-gradient(45deg, #1a1a2e, #16213e, #0f3460);
+    color: white;
     display: flex;
     align-items: center;
     justify-content: center;
+    font-size: 2rem;
+    font-weight: bold;
     text-align: center;
-    font-size: 24px;
     cursor: pointer;
-    transition: opacity 0.5s;
+    transition: opacity 0.5s ease-in-out;
 }
 
-/* Main content */
-#main-content {
-    text-align: center;
-    padding: 50px;
-}
-
-.hidden {
+#welcome-screen.hidden {
     display: none;
 }
 
-/* Particles animation */
+/* Main Content */
+#main-content {
+    display: none;
+    opacity: 0;
+    animation: fadeIn 1s forwards 0.5s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Background Particles */
 .particle {
     position: absolute;
     background: rgba(255, 255, 255, 0.2);
     border-radius: 50%;
-    animation: floatUp infinite ease-in;
+    animation: floatUp ease-in infinite;
 }
 
 @keyframes floatUp {
