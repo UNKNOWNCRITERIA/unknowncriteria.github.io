@@ -1,37 +1,42 @@
-let clickCount = 0;
+document.addEventListener("DOMContentLoaded", () => {
+    const welcomeScreen = document.getElementById("welcome-screen");
+    let clickCount = 0;
 
-function nextStep() {
-    clickCount++;
+    welcomeScreen.addEventListener("click", () => {
+        clickCount++;
+        if (clickCount === 3) {
+            welcomeScreen.style.opacity = "0";
+            setTimeout(() => {
+                welcomeScreen.style.display = "none";
+                document.getElementById("main-content").classList.remove("hidden");
+                startParticles(); // Start animation
+            }, 500);
+        }
+    });
+});
 
-    if (clickCount === 1) {
-        document.getElementById("welcome-text").innerText = "to Intangible Network Official";
-    } else if (clickCount === 2) {
-        document.getElementById("welcome-text").innerText = "By Rahul Kumar";
-    } else if (clickCount === 3) {
-        document.getElementById("welcome-screen").style.opacity = "0";
-        setTimeout(() => {
-            document.getElementById("welcome-screen").style.display = "none";
-            document.getElementById("main-content").classList.remove("hidden");
-            startBackgroundAnimation();
-        }, 500);
-    }
-}
+// Background animation
+function startParticles() {
+    const particleContainer = document.createElement("div");
+    particleContainer.style.position = "fixed";
+    particleContainer.style.width = "100vw";
+    particleContainer.style.height = "100vh";
+    particleContainer.style.overflow = "hidden";
+    particleContainer.style.zIndex = "-1";
+    document.body.appendChild(particleContainer);
 
-// Background animation effect
-function startBackgroundAnimation() {
-    const body = document.body;
-    for (let i = 0; i < 50; i++) {
-        let particle = document.createElement("div");
-        particle.className = "particle";
-        body.appendChild(particle);
-
-        let animDuration = Math.random() * 5 + 2;
-        let size = Math.random() * 6 + 2;
-        let position = Math.random() * 100;
-
+    setInterval(() => {
+        const particle = document.createElement("div");
+        particle.classList.add("particle");
+        let size = Math.random() * 10 + 5;
         particle.style.width = ${size}px;
         particle.style.height = ${size}px;
-        particle.style.left = ${position}%;
-        particle.style.animationDuration = ${animDuration}s;
-    }
+        particle.style.left = ${Math.random() * 100}vw;
+        particle.style.animationDuration = ${Math.random() * 5 + 2}s;
+
+        particleContainer.appendChild(particle);
+        setTimeout(() => {
+            particle.remove();
+        }, 7000);
+    }, 200);
 }
