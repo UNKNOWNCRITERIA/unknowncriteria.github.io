@@ -1,56 +1,83 @@
-// Smooth scrolling effect
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener("click", function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute("href")).scrollIntoView({
-            behavior: "smooth"
+// Import GSAP & Three.js for Animation
+import gsap from "https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js";
+
+// Background Animation
+const bgAnimation = () => {
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
+    document.body.appendChild(canvas);
+    canvas.style.position = "fixed";
+    canvas.style.top = "0";
+    canvas.style.left = "0";
+    canvas.style.zIndex = "-1";
+
+    let particles = [];
+    const numParticles = 50;
+    const colors = ["#ff4081", "#1e90ff", "#ffcc00", "#00ffcc"];
+
+    // Initialize Canvas
+    function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+    window.addEventListener("resize", resizeCanvas);
+    resizeCanvas();
+
+    // Particle Class
+    class Particle {
+        constructor() {
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height;
+            this.radius = Math.random() * 4 + 2;
+            this.color = colors[Math.floor(Math.random() * colors.length)];
+            this.speedX = Math.random() * 2 - 1;
+            this.speedY = Math.random() * 2 - 1;
+        }
+        update() {
+            this.x += this.speedX;
+            this.y += this.speedY;
+            if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+            if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+        }
+        draw() {
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+            ctx.fillStyle = this.color;
+            ctx.fill();
+        }
+    }
+
+    // Create Particles
+    for (let i = 0; i < numParticles; i++) {
+        particles.push(new Particle());
+    }
+
+    // Animation Loop
+    function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        particles.forEach((particle) => {
+            particle.update();
+            particle.draw();
         });
-    });
-});
-
-// Dark Mode Toggle
-const toggleDarkMode = () => {
-    document.body.classList.toggle("dark-mode");
+        requestAnimationFrame(animate);
+    }
+    animate();
 };
 
-// Scroll Animation (GSAP)
-gsap.from(".feature-card", {
-    opacity: 0,
-    y: 50,
-    duration: 1,
-    stagger: 0.3,
-    scrollTrigger: {
-        trigger: ".features",
-        start: "top 80%",
-        toggleActions: "play none none reverse"
-    }
-});
-
-// AI-powered text effect (Typewriter)
-const phrases = ["Next-Level Experience!", "Google-powered Webpage!", "AI-Powered Animations!"];
-let currentPhrase = 0;
-let currentChar = 0;
-const typeEffect = document.querySelector("#type-effect");
-
-const typeText = () => {
-    if (currentChar < phrases[currentPhrase].length) {
-        typeEffect.textContent += phrases[currentPhrase][currentChar];
-        currentChar++;
-        setTimeout(typeText, 100);
-    } else {
-        setTimeout(() => {
-            typeEffect.textContent = "";
-            currentChar = 0;
-            currentPhrase = (currentPhrase + 1) % phrases.length;
-            typeText();
-        }, 2000);
-    }
+// GSAP Welcome Animation
+const welcomeAnimation = () => {
+    gsap.to("#welcome-screen", { opacity: 1, duration: 1.5, ease: "power2.out" });
+    setTimeout(() => {
+        gsap.to("#welcome-screen", { opacity: 0, duration: 1.5, onComplete: () => {
+            document.getElementById("welcome-screen").style.display = "none";
+            document.getElementById("main-content").classList.remove("hidden");
+            gsap.from("#main-content", { opacity: 0, y: 50, duration: 1.5, ease: "power2.out" });
+        }});
+    }, 3000);
 };
-typeText();
 
-// Background animation
-document.addEventListener("mousemove", (e) => {
-    let x = e.clientX / window.innerWidth - 0.5;
-    let y = e.clientY / window.innerHeight - 0.5;
-    document.body.style.backgroundPosition = ${x * 10}px ${y * 10}px;
+// Initialize Animations
+document.addEventListener("DOMContentLoaded", () => {
+    bgAnimation();
+    welcomeAnimation();
 });
