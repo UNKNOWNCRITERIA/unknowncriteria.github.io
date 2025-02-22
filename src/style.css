@@ -9,32 +9,26 @@
 }
 
 :root {
-    --primary-color: #734f96;
-    --secondary-color: #e8e1ef;
-    --background-color: #100b16;
-    --text-color: #fff;
-    --hover-color: #000000;
-    --border-color: rgba(255, 255, 255, 0.2);
-    -webkit-tap-highlight-color: transparent;
+    -webkit-tap-highlight-color: #0000;
     -webkit-user-select: none; 
     -ms-user-select: none; 
     user-select: none;
 }
 
 body {
-    background: linear-gradient(135deg, var(--background-color), #1a1a1a);
-    background-attachment: fixed;
+    background-color: #000000; /* Dark black background */
+    color: #ffffff; /* White text color */
+    font-family: 'Poppins', sans-serif; /* Use Poppins font */
     overflow: hidden;
-    font-family: 'Poppins', sans-serif;
 }
 
 h1:hover {
     cursor: pointer;
-    background-color: var(--hover-color);
-    color: var(--background-color);
+    background-color: #e8e1ef;
+    color: #100b16;
     border-radius: .25em;
     padding: 1rem 2rem;
-    transition: all 300ms ease-in-out;
+    transition: all 300ms linear;
 }
 
 #check {
@@ -45,30 +39,33 @@ h1:hover {
     position: absolute;
     width: 100%;
     height: 100%;
-    background-color: var(--background-color);
+    background-color: #100b16;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: 50% 50%;
     transition: all .3s;
 }
 
 .loader {
     position: fixed;
     z-index: 99999;
-    background-color: var(--background-color);
+    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black for loader */
     width: 100vw;
     height: 100vh;
-    color: var(--secondary-color);
+    color: #e8e1ef; /* White text for loader */
     display: flex;
     justify-content: center;
     align-items: center;
     font-family: 'Space Mono', monospace;
-    font-size: 1.5rem;
-    transition: all 300ms ease-in-out;
+    font-size: 1.25rem;
+    transition: all 300ms linear;
 }
 
 .modal {
     position: fixed;
     width: 100%;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.9); /* Dark modal background */
     z-index: -1;
     opacity: 0;
     transition: .5s;
@@ -77,9 +74,9 @@ h1:hover {
 
 .modal img {
     position: absolute;
-    top: 50%;
+    top: 25%;
     left: 50%;
-    transform: translate(-50%, -50%) scale(0.3);
+    transform: translate(-50%, -50%) scale(.3);
     max-width: 100%;
     max-height: 100%;
     transition: .5s;
@@ -92,6 +89,7 @@ h1:hover {
 }
 
 .modal.show img {
+    top: 50%;
     transform: translate(-50%, -50%) scale(1);
 }
 
@@ -110,7 +108,7 @@ h1:hover {
     border-radius: 10px;
     overflow: hidden;
     transition: .3s;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    --anim: none;
 }
 
 .card:before {
@@ -122,6 +120,7 @@ h1:hover {
     left: 0;
     clip-path: circle(400px at 50% -48.5%);
     transition: .3s;
+    animation: var(--anim);
 }
 
 .header {
@@ -138,12 +137,11 @@ h1:hover {
     opacity: 1;
     transition: .3s;
     z-index: 3;
-    text-decoration: none;
 }
 
 .mail:hover {
     opacity: 1;
-    transform: scale(1.1);
+    transform: scale(1.07);
 }
 
 .hamburger-menu {
@@ -160,6 +158,7 @@ h1:hover {
 
 .hamburger-menu:hover {
     opacity: 1;
+    position: relative;
     width: 25px;
 }
 
@@ -173,8 +172,7 @@ h1:hover {
     transition: .3s;
 }
 
-.hamburger-menu:before,
-.hamburger-menu:after {
+.hamburger-menu:before, .hamburger-menu:after {
     content: '';
     position: absolute;
     width: 100%;
@@ -182,7 +180,6 @@ h1:hover {
     border-radius: 1px;
     transition: .3s;
 }
-
 .hamburger-menu:before {
     top: 0;
 }
@@ -209,16 +206,15 @@ h1:hover {
     width: 110px;
     height: 110px;
     border-radius: 50%;
-    background: url('https://envs.sh/FFh.jpg') no-repeat center / cover;
+    background: url('https://i.ibb.co/Hnvn01C/WH.webp') no-repeat center / cover;
     margin-bottom: 2px;
     overflow: hidden;
     cursor: pointer;
     transition: border .3s;
-    border: 4px solid var(--border-color);
 }
 
 .image .hover {
-    color: var(--text-color);
+    color: #fff;
     position: absolute;
     width: 100%;
     height: 100%;
@@ -240,16 +236,16 @@ h1:hover {
 }
 
 .name {
-    color: var(--text-color);
-    font-size: 1.5rem;
-    font-weight: 600;
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: 500;
     line-height: 1;
     margin: 5px 0;
     transition: .3s;
 }
 
 .sub-name {
-    color: var(--text-color);
+    color: #fff;
     font-family: 'Titillium Web', sans-serif;
     font-size: 1.2rem;
     opacity: .8;
@@ -309,7 +305,6 @@ h1:hover {
     border-radius: 1.5px;
     bottom: 0;
     left: 0;
-    background-color: var(--primary-color);
 }
 
 .text {
@@ -336,8 +331,7 @@ h1:hover {
     transition: .3s;
 }
 
-.follow-wrap,
-.share-wrap {
+.follow-wrap, .share-wrap {
     flex: 4;
     display: flex;
     justify-content: center;
@@ -345,8 +339,7 @@ h1:hover {
     transition: .3s;
 }
 
-.follow-wrap:hover,
-.share-wrap:hover {
+.follow-wrap:hover, .share-wrap:hover {
     flex: 5;
 }
 
@@ -361,8 +354,7 @@ h1:hover {
     border-radius: 18.1px;
     margin-right: 3px;
     transition: .3s;
-    background: linear-gradient(to right, #7F00FF, #E100FF);
-    color: #fff;
+    animation: none;
 }
 
 .share {
@@ -376,8 +368,6 @@ h1:hover {
     margin-left: 3px;
     border-radius: 18.1px;
     transition: .3s;
-    border: 2px solid #734f96;
-    color: #734f96;
 }
 
 .close {
@@ -387,11 +377,10 @@ h1:hover {
     width: 30px;
     height: 30px;
     cursor: pointer;
-    transition:.3s;
+    transition: .3s;
 }
 
-.close:before,
-.close:after {
+.close:before, .close:after {
     background-color: #fff;
     content: '';
     position: absolute;
@@ -423,7 +412,7 @@ h1:hover {
     display: none;
     backdrop-filter: blur(12.5px);
     border-radius: 10px;
-    border: 1px solid var(--border-color);
+    border: 1px solid #00000025;
     transition: .3s;
 }
 
@@ -433,156 +422,110 @@ h1:hover {
     justify-content: center;
     display: flex;
     font-family: 'Poppins', sans-serif;
-    color: var(--text-color);
     transition: .3s;
 }
 
 .sidebar a:hover {
-    transform: scale(1.1);
+    transform: scale(1.2);
 }
 
 .dark .card {
-    background-color: rgba(0, 0, 0, 0.6);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(10px);
-}
-
-.dark .card:before {
-    background: var(--primary-color);
+    background-color: rgba(255, 255, 255, 0.1); /* Slightly transparent for dark mode */
+    box-shadow: 0 5px 15px 1px rgba(0, 0, 0, 0.5);
 }
 
 .dark .mail {
-    color: #1b262c;
+    color: #ffffff; /* White mail icon */
 }
 
 .dark .hamburger-menu .center {
-    background-color: #000;
-}
-
-.dark .hamburger-menu:before,
-.dark .hamburger-menu:after {
-    background-color: #000;
+    background-color: #ffffff; /* White hamburger menu */
 }
 
 .dark .main .image {
-    border: 4px solid #24192f;
+    border: 4px solid #24192f; /* Dark border for image */
 }
 
 .dark .image .hover {
-    background-color: rgba(115, 79, 150, 0.7);
+    background-color: rgba(115, 79, 150, 0.7); /* Dark hover effect */
 }
 
 .dark .title {
-    color: #fff;
-}
-
-.dark .title:after {
-    background-color: #fff;
+    color: #ffffff; /* White title */
 }
 
 .dark .text {
-    color: #fff;
+    color: #ffffff; /* White text */
 }
 
 .dark .icon {
-    color: #fff;
-}
-
-.dark .icon:hover {
-    color: var(--primary-color);
+    color: #ffffff; /* White icons */
 }
 
 .dark .follow {
-    background: var(--primary-color);
-    color: #000;
+    background: rgba(115, 79, 150, 0.8); /* Dark background for follow button */
+    color: #ffffff; /* White text */
 }
 
 .dark .share {
-    border: 2px solid var(--primary-color);
-    color: var(--primary-color);
-}
-
-.dark .sidebar {
-    background-color: rgba(0, 0, 0, 0.5);
-}
-
-.dark .sidebar a {
-    color: #fff;
+    border: 2px solid rgba(115, 79, 150, 0.8); /* Dark border for share button */
+    color: rgba(115, 79, 150, 0.8); /* Dark text */
 }
 
 .light .card {
-    background-color: rgba(255, 255, 255, 0.6);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(7.5px);
-}
-
-.light .card:before {
-    background: linear-gradient(to top, #7F00FF, #E100FF);
+    background-color: rgba(255, 255, 255, 0.9); /* Light card background */
 }
 
 .light .mail {
-    color: #fff;
+    color: #000; /* Black mail icon */
 }
 
 .light .hamburger-menu .center {
-    background-color: #fff;
-}
-
-.light .hamburger-menu:before,
-.light .hamburger-menu:after {
-    background-color: #fff;
+    background-color: #000; /* Black hamburger menu */
 }
 
 .light .main .image {
-    border: 4px solid #c300ff;
+    border: 4px solid #c300ff; /* Light border for image */
 }
 
 .light .image .hover {
-    background: rgba(156, 0, 204, 0.4);
+    background: rgba(156, 0, 204, 0.7); /* Light hover effect */
 }
 
 .light .title {
-    color: #555;
-}
-
-.light .title:after {
-    background-color: #555;
+    color: #555; /* Dark gray title for light mode */
 }
 
 .light .text {
-    color: #666;
+    color: #666; /* Dark gray text for light mode */
 }
 
 .light .icon {
-    color: #c4c4c4;
-}
-
-.light .icon:hover {
-    color: #9D4EDD;
+    color: #c4c4c4; /* Light gray icons */
 }
 
 .light .follow {
-    background: linear-gradient(to right, #7F00FF, #E100FF);
-    color: #fff;
+    background: linear-gradient(to right, #7F00FF, #E100FF); /* Gradient background for follow button */
+    color: #fff; /* White text */
 }
 
 .light .share {
-    border: 2px solid #6200ffc0;
-    color: #7F00FF;
+    border: 2px solid #6200ffc0; /* Light border for share button */
+    color: #7F00FF; /* Light text */
 }
 
-.light .close:before,
-.light .close:after {
-    background-color: #fff;
+.light .close:before, .light .close:after {
+    background-color: #000; /* Black close button in light mode */
 }
 
 .light .sidebar a {
-    color: #510080;
+    color: #510080; /* Dark purple links in light mode */
 }
 
+/* Media Queries for Responsive Design */
 @media (max-width: 410px) {
     .content {
-        flex-direction: column;
+        flex-direction: column; /* Stack content vertically on small screens */
     }
 
     .right {
@@ -596,11 +539,11 @@ h1:hover {
 
 @media (max-width: 370px) {
     .header {
-        height: 230px;
+        height: 230px; /* Adjust header height */
     }
 
     .card:before {
-        clip-path: circle(400px at 50% -74.5%);
+        clip-path: circle(400px at 50% -74.5%); /* Adjust clip-path for smaller screens */
         height: 230px;
     }
 
@@ -623,62 +566,63 @@ h1:hover {
         border-width: 3px;
     }
 
-    .name,
-    .sub-name {
+    .name, .sub-name {
         font-size: 1rem;
     }
 
     .content {
-        padding: 1.2rem 1.8rem 1.8rem 1.8rem;
+        padding: 1.2rem 1.8rem 1.8rem 1.8rem; /* Adjust padding */
     }
 
     .number {
-        font-size: 1.8rem;
+        font-size: 1.8rem; /* Adjust number size */
     }
 
     .number-title {
-        font-size: .4rem;
+        font-size: .4rem; /* Adjust number title size */
     }
 
     .right {
-        padding-top: 1rem;
+        padding-top: 1rem; /* Adjust padding */
     }
 
     .title {
-        font-size: .9rem;
+        font-size: .9rem; /* Adjust title size */
         margin-bottom: .5rem;
     }
 
     .text {
-        font-size: .8rem;
+        font-size: .8rem; /* Adjust text size */
     }
 
     .icons-container {
-        padding: .5rem 0;
+        padding: .5rem 0; /* Adjust padding */
     }
 
     .icon {
-        font-size: 1.1rem;
+        font-size: 1.1rem; /* Adjust icon size */
     }
 
     .follow {
-        padding: 7.6px 0;
-        border-radius: 14.6px;
-        font-size: .6rem;
+        padding: 7.6px 0; /* Adjust follow button padding */
+        border-radius: 14.6px; /* Adjust border radius */
+        font-size: .6rem; /* Adjust font size */
     }
 
     .share {
-        padding: 5.6px 0;
-        border-radius: 14.6px;
-        font-size: .6rem;
+        padding: 5.6px 0; /* Adjust share button padding */
+        border-radius: 14.6px; /* Adjust border radius */
+        font-size: .6rem; /* Adjust font size */
     }
 }
 
+/* Toggle Switch Styles */
 .wrapper {
     position: absolute;
     left: 0;
     top: 20px;
     transform: scale(.8);
+    margin-left: -75px;
 }
 
 .toggle {
@@ -690,8 +634,7 @@ h1:hover {
     border-radius: 40px;
 }
 
-.toggle:before,
-.toggle:after {
+.toggle:before, .toggle:after {
     content: '';
     display: block;
 }
@@ -706,7 +649,7 @@ h1:hover {
     left: -5px;
     width: 100%;
     height: 100%;
-    background-color: var(--hover-color);
+    background-color: #e7bdffa1;
     border-radius: 40px;
     border: 5px solid #e0aaff;
     transition: all 300ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -719,10 +662,10 @@ h1:hover {
     left: 0;
     width: 100%;
     height: 100%;
+    border: 1px solid red;
     border-radius: 40px;
     z-index: 2;
     opacity: 0;
-    transition: .3s;
 }
 
 .toggle-switch {
@@ -793,7 +736,7 @@ h1:hover {
     background-color: #efeeda;
     border-radius: 100%;
     border: 4px solid #dee1c5;
-    box-shadow: 42px -7px 0 -3px #fcfcfc, 65px -10px 0 -3px #fcfcfc, 54px 4px 0 -2px #fcfcfc,    70px 7px 0 -2px #fcfcfc, 55px 30px 0 -4px #fcfcfc, 44px 20px 0 -2px #fcfcfc, 65px 20px 0 -3px #fcfcfc;
+    box-shadow: 42px -7px 0 -3px #fcfcfc, 65px -10    px 0 -3px #fcfcfc, 54px 4px 0 -2px #fcfcfc, 70px 7px 0 -2px #fcfcfc, 55px 30px 0 -4px #fcfcfc, 44px 20px 0 -2px #fcfcfc, 65px 20px 0 -3px #fcfcfc;
     transition: all 0.12s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     transform: scale(0);
 }
@@ -828,7 +771,7 @@ h1:hover {
 }
 
 .toggle-input:checked ~ .toggle-bg {
-    background-color: rgba(45, 31, 61, 0.8);
+    background-color: #2d1f3da1;
     border-color: #231830;
 }
 
@@ -842,6 +785,7 @@ h1:hover {
     transform: scale(1);
 }
 
+/* Keyframes for Animations */
 @keyframes fadeIn {
     0% {
         opacity: 0; 
@@ -871,13 +815,13 @@ h1:hover {
         background-image: linear-gradient(to top, #7F00FF, #E100FF);
     }
     100% {
-        background: var(--primary-color);
+        background: #734f96;
     }
 }
 
 @keyframes cardLightGradient {
     0% {
-        background: var(--primary-color);
+        background: #734f96;
     }
     100% {
         background-image: linear-gradient(to top, #7F00FF, #E100FF);
@@ -889,13 +833,13 @@ h1:hover {
         background-image: linear-gradient(to right, #7F00FF, #E100FF);
     }
     100% {
-        background: var(--primary-color);
+        background: #734f96;
     }
 }
 
 @keyframes followLightGradient {
     0% {
-        background: var(--primary-color);
+        background: #734f96;
     }
     100% {
         background-image: linear-gradient(to right, #7F00FF, #E100FF);
