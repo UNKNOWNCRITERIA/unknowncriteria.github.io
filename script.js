@@ -1,83 +1,37 @@
-// Import GSAP & Three.js for Animation
-import gsap from "https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js";
+let clickCount = 0;
 
-// Background Animation
-const bgAnimation = () => {
-    const canvas = document.createElement("canvas");
-    const ctx = canvas.getContext("2d");
-    document.body.appendChild(canvas);
-    canvas.style.position = "fixed";
-    canvas.style.top = "0";
-    canvas.style.left = "0";
-    canvas.style.zIndex = "-1";
+function nextStep() {
+    clickCount++;
 
-    let particles = [];
-    const numParticles = 50;
-    const colors = ["#ff4081", "#1e90ff", "#ffcc00", "#00ffcc"];
-
-    // Initialize Canvas
-    function resizeCanvas() {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-    }
-    window.addEventListener("resize", resizeCanvas);
-    resizeCanvas();
-
-    // Particle Class
-    class Particle {
-        constructor() {
-            this.x = Math.random() * canvas.width;
-            this.y = Math.random() * canvas.height;
-            this.radius = Math.random() * 4 + 2;
-            this.color = colors[Math.floor(Math.random() * colors.length)];
-            this.speedX = Math.random() * 2 - 1;
-            this.speedY = Math.random() * 2 - 1;
-        }
-        update() {
-            this.x += this.speedX;
-            this.y += this.speedY;
-            if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
-            if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
-        }
-        draw() {
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-            ctx.fillStyle = this.color;
-            ctx.fill();
-        }
-    }
-
-    // Create Particles
-    for (let i = 0; i < numParticles; i++) {
-        particles.push(new Particle());
-    }
-
-    // Animation Loop
-    function animate() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        particles.forEach((particle) => {
-            particle.update();
-            particle.draw();
-        });
-        requestAnimationFrame(animate);
-    }
-    animate();
-};
-
-// GSAP Welcome Animation
-const welcomeAnimation = () => {
-    gsap.to("#welcome-screen", { opacity: 1, duration: 1.5, ease: "power2.out" });
-    setTimeout(() => {
-        gsap.to("#welcome-screen", { opacity: 0, duration: 1.5, onComplete: () => {
+    if (clickCount === 1) {
+        document.getElementById("welcome-text").innerText = "to Intangible Network Official";
+    } else if (clickCount === 2) {
+        document.getElementById("welcome-text").innerText = "By Rahul Kumar";
+    } else if (clickCount === 3) {
+        document.getElementById("welcome-screen").style.opacity = "0";
+        setTimeout(() => {
             document.getElementById("welcome-screen").style.display = "none";
             document.getElementById("main-content").classList.remove("hidden");
-            gsap.from("#main-content", { opacity: 0, y: 50, duration: 1.5, ease: "power2.out" });
-        }});
-    }, 3000);
-};
+            startBackgroundAnimation();
+        }, 500);
+    }
+}
 
-// Initialize Animations
-document.addEventListener("DOMContentLoaded", () => {
-    bgAnimation();
-    welcomeAnimation();
-});
+// Background animation effect
+function startBackgroundAnimation() {
+    const body = document.body;
+    for (let i = 0; i < 50; i++) {
+        let particle = document.createElement("div");
+        particle.className = "particle";
+        body.appendChild(particle);
+
+        let animDuration = Math.random() * 5 + 2;
+        let size = Math.random() * 6 + 2;
+        let position = Math.random() * 100;
+
+        particle.style.width = ${size}px;
+        particle.style.height = ${size}px;
+        particle.style.left = ${position}%;
+        particle.style.animationDuration = ${animDuration}s;
+    }
+}
